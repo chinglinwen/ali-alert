@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"log"
 	"net/url"
 	"strconv"
@@ -44,6 +45,10 @@ type Alert struct {
 }
 
 func decodeMsg(body string) (a *Alert, err error) {
+	if body == "" {
+		err = fmt.Errorf("empty body")
+		return
+	}
 	// fmt.Println("body", body)
 	// sbody, err := url.QueryUnescape(body)
 	// if err != nil {
@@ -52,6 +57,7 @@ func decodeMsg(body string) (a *Alert, err error) {
 	// fmt.Println("sbody", sbody)
 	data, err := url.ParseQuery(body)
 	if err != nil {
+		err = fmt.Errorf("parse uri err: %v, body: %v", err, body)
 		return
 	}
 
@@ -126,8 +132,7 @@ const msgtmpl = `报警名字： {{ .AlertName }}
 当前值： {{ .CurValue }}
 条件： {{ .MetricName }}: {{ .Expr }}
 报警状态： {{ .AlertState }}
-时间： {{ .Timestamp }}
-`
+时间： {{ .Timestamp }}`
 
 func (a *Alert) String() (s string) {
 	t, err := template.New("test").Parse(msgtmpl)

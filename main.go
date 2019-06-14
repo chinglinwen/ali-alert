@@ -18,15 +18,18 @@ func main() {
 func handler(w http.ResponseWriter, r *http.Request) {
 	bodyBytes, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		log.Fatal(err)
+		err = fmt.Errorf("empty body err: %v", err)
+		E(w, err)
+		return
 	}
 
 	a, err := decodeMsg(string(bodyBytes))
 	if err != nil {
-		log.Println("decodeMsg err", err)
+		err = fmt.Errorf("decodeMsg err: %v", err)
+		E(w, err)
 		return
 	}
-	fmt.Printf("%#v\n", a)
+	fmt.Printf("got callback: %v\n", a)
 
 	s := fmt.Sprintf("%v", a)
 
@@ -38,12 +41,18 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		reply, err = Send(s)
 	}
 	if err != nil {
-		log.Println("SendPerson err", err)
+		err = fmt.Errorf("send err: %v, reply: %v", err, reply)
+		E(w, err)
 		return
 	}
-	log.Println("done: ", reply)
+	log.Println("send reply: ", reply)
 
 	fmt.Fprintf(w, "got it")
+}
+
+func E(w http.ResponseWriter, err error) {
+	log.Println(err)
+	fmt.Fprintf(w, err.Error())
 }
 
 // func pretty(prefix string, a interface{}) {
