@@ -126,7 +126,7 @@ func parseTimestamp(s string) (t string, err error) {
 
 */
 
-const msgtmpl = `报警名字： {{ .AlertName }}
+const msgtmpl = `名字： {{ .AlertName }}
 任务： {{ .TaskName }}
 地址： {{ .Addr }}
 当前值： {{ .CurValue }}
