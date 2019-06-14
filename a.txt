@@ -1,0 +1,69 @@
+curl a.clwen.com:8080/test -d'"{"helo":"a"}"'
+
+
+
+alertState:[OK]
+metricProject:[acs_networkmonitor]
+signature:[dVHyXQ6g7jwbeHFSD/g4BcmU/Dg=]
+ruleId:[b47607e8-9826-4ba0-8f04-d27c8ca0670b_StatusCode]
+timestamp:[1560334740000]
+triggerLevel:[OK]
+userId:[1627690583007430]
+curValue:[0]
+dimensions:[{taskId=b47607e8-9826-4ba0-8f04-d27c8ca0670b, userId=1627690583007430}]
+expression:[$ErrorCodeMaximum>=201]
+preTriggerLevel:[INFO]
+metricName:[StatusCode]
+
+	alertName:[test-独立报警状态码]
+instanceName:[taskName=test，address=http://a.clwen.com:9000]
+namespace:[acs_networkmonitor]
+
+
+(url.Values) (len=15) {
+ (string) (len=9) "timestamp": ([]string) (len=1 cap=1) {
+  (string) (len=13) "1560334740000"
+ },
+ (string) (len=6) "userId": ([]string) (len=1 cap=1) {
+  (string) (len=16) "1627690583007430"
+ },
+ (string) (len=10) "metricName": ([]string) (len=1 cap=1) {
+  (string) (len=10) "StatusCode"
+ },
+ (string) (len=12) "instanceName": ([]string) (len=1 cap=1) {
+  (string) (len=47) "taskName=test，address=http://a.clwen.com:9000"
+ },
+ (string) (len=12) "triggerLevel": ([]string) (len=1 cap=1) {
+  (string) (len=2) "OK"
+ },
+ (string) (len=10) "alertState": ([]string) (len=1 cap=1) {
+  (string) (len=2) "OK"
+ },
+ (string) (len=10) "dimensions": ([]string) (len=1 cap=1) {
+  (string) (len=70) "{taskId=b47607e8-9826-4ba0-8f04-d27c8ca0670b, userId=1627690583007430}"
+ },
+ (string) (len=8) "curValue": ([]string) (len=1 cap=1) {
+  (string) (len=1) "0"
+ },
+ (string) (len=10) "expression": ([]string) (len=1 cap=1) {
+  (string) (len=22) "$ErrorCodeMaximum>=201"
+ },
+ (string) (len=13) "metricProject": ([]string) (len=1 cap=1) {
+  (string) (len=18) "acs_networkmonitor"
+ },
+ (string) (len=9) "namespace": ([]string) (len=1 cap=1) {
+  (string) (len=18) "acs_networkmonitor"
+ },
+ (string) (len=15) "preTriggerLevel": ([]string) (len=1 cap=1) {
+  (string) (len=4) "INFO"
+ },
+ (string) (len=6) "ruleId": ([]string) (len=1 cap=1) {
+  (string) (len=47) "b47607e8-9826-4ba0-8f04-d27c8ca0670b_StatusCode"
+ },
+ (string) (len=9) "signature": ([]string) (len=1 cap=1) {
+  (string) (len=28) "dVHyXQ6g7jwbeHFSD/g4BcmU/Dg="
+ },
+ (string) (len=11) "\n\talertName": ([]string) (len=1 cap=1) {
+  (string) (len=26) "test-独立报警状态码"
+ }
+}
