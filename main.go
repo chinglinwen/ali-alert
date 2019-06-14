@@ -10,6 +10,7 @@ import (
 
 func main() {
 	flag.Parse()
+	log.Println("started, ready to receive callback call")
 	http.HandleFunc("/", handler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
